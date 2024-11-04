@@ -9,5 +9,9 @@ description: >
   Pythonしかまともにプログラミングできない受験生(中3)
   最近Javascriptもやってるらしい
 
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
 minima:
   skin: classic
