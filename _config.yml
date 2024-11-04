@@ -1,5 +1,13 @@
-title: "かける族のウェブサイト"
-theme: jekyll-theme-minima
-description: "Pythonしかまともにプログラミングできない受験生(中3)???"
+theme: minima
 
-logo: img/kakeruzoku.png
+title: かける族のウェブサイト
+author:
+  name: Python / Scratch User
+  email: kakeruzoku@gmail.com
+
+description: >
+Pythonしかまともにプログラミングできない受験生(中3)
+最近Javascriptもやってるらしい
+
+minima:
+  skin: classic
