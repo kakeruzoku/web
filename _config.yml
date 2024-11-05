@@ -9,7 +9,7 @@ header_pages:
   - index.md
   - discord/index.md
   - discord/bot/index.md
-  - Scratchattach.md
+  - scratch/scratchattach.md
 
 plugins:
   - jekyll-feed

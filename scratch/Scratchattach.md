@@ -93,6 +93,7 @@ Chrome/Edge/Brave 等 Chromium プラウザは以下の通り。
 1. cookies→「scratchsessionsid」を探す。それがセッションID
 #### sa.User - ユーザークラス
 ユーザーを表します。
+
 ```py
 user = session.connect_user("ユーザー名") #ユーザー名からユーザー取得
 user = session.connect_user_by_id("ユーザーID") #*1 ユーザー名からユーザー取得
@@ -203,6 +204,7 @@ user.followers_over_time(segment=1, range=30)
 
 #### sa.Project / sa.PartialProject - プロジェクトクラス
 sa.PartialProject … 「非共有」プロジェクト
+
 ```py
 project = session.connect_project("project_id") #プロジェクトに接続
 project = session.create_project(title="title") #プロジェクトを作成(300s/5プロジェクト の制限)
@@ -289,6 +291,7 @@ instructions = str #使い方
 description = str #メモとクレジット
 ```
 #### sa.Studio - スタジオクラス
+
 ```py
 studio = session.connect_studio("studio_id") #接続
 studio = sa.get_studio("studio_id") #取得
@@ -479,6 +482,7 @@ topic.first_post() #sa.ForumPost 最初の投稿を返す
 ```
 
 - *1 カテゴリーIDリスト
+
 ```
 Welcome to Scratch - Scratchへようこそ
 5 - Announcements - お知らせ
@@ -554,6 +558,7 @@ post.ocular_reactions() #list[dict] リアクションを見る
 
 #### sa.Classrooms - クラスオブジェクト
 > ~~実は俺がぷるりくおくった！！！~~
+
 ```py
 #終了したクラスは取得できません。
 classroom = session.connect_classroom("クラスID")
@@ -633,8 +638,10 @@ turbowarpクラウドは有効な User-Agent ヘッダーを提供する必要�
 >Bots must provide a valid User-Agent header in their connection. That includes contact information (such as a Scratch profile link, email address, GitHub issue page, etc.) and the name and version of the cloud variable library being used (if applicable). Exact syntax does not matter; just needs to be human readable
 
 >ボットは、接続時に有効な User-Agent ヘッダーを提供する必要があります。これには、連絡先情報 (Scratch プロファイル リンクに、メール アドレス、GitHub の問題ページなど) と、使用されているクラウド変数ライブラリの名前とバージョン (該当する場合) が含まれます。正確な構文は重要ではなく、人間が読める形式である必要があります。
+
 #### sa.BaseCloud
 sa.ScratchCloud(Scratchクラウド変数)/sa.TwCloud(ターボワープクラウド変数)/sa.CustomCloud(その他)に適用されてます。
+
 ```py
 cloud = session.connect_scratch_cloud("プロジェクトid") #
 cloud = session.connect_tw_cloud("プロジェクトid", purpose="接続する理由", contact="連絡先")
@@ -781,8 +788,9 @@ def on_ready():
 client.start(thread=True) #thread=True または未設定でスレッドで実行されます。
 ```
 ファイルを実行してから、Scratchで実行:
-```diff
-- [Send request | request name: (ping) and wait]
+
+```
+[Send request | request name: (ping) and wait]
 ```
 すると、リスト response に `pong` と表示されるはずです。
 
@@ -794,10 +802,10 @@ def message_count(argument1): #メッセージカウントがリクエストさ�
     user = sa.get_user(argument1) #ユーザーを取得
     return user.message_count() #メッセージ数を返す
 ```
-```diff
-- [Send request | request name: (message_count) argument1: ((ユーザー名)) and wait]
-+ または
-- [Send request | request name: (((ping&)と(ユーザー名))) and wait]
+```
+[Send request | request name: (message_count) argument1: ((ユーザー名)) and wait]
+または
+[Send request | request name: (((ping&)と(ユーザー名))) and wait]
 ```
 複数の引数を入力したい場合は `&` で区切って送信してください。
 
