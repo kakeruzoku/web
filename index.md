@@ -1,8 +1,7 @@
 かける族のサイトへようこそ！
 
 # お知らせ
-
-- [Scrachattachの日本語wiki(自作)](https://www.kakeru.f5.si/scratch/scratchattach.html)、あるよ。
+- [Scrachattachの日本語wiki(自作)](https://www.kakeru.f5.si/scratch/Scratchattach.html)、あるよ。
 - サイトを作り直しました
 
 # サービス一覧
@@ -24,4 +23,5 @@
     - [かける鯖 - Q4tkxFVzUX](https://discord.gg/Q4tkxFVzUX) 100+メンバー
     - [宣伝鯖 - xcHErNT9tz](https://discord.gg/xcHErNT9tz) 1500+メンバー
 - Gmail [kakeruzoku@gmail.com](mailto:kakeruzoku@gmail.com)
+- Note [https://note.com/kakeruzoku/]
 
