@@ -17,22 +17,62 @@
 Scratchの最新のプロジェクトIDが見れます。
 
 ## 自作ドキュメント(日本語版)
-### 注意
+### 目次
+- [目次](#目次)
+- [はじめに]()
+  - [注意](#注意)
+  - [インストール](#インストール)
+  - [プロキシの設定](#プロキシ)
+- [サイトAPI](#サイトapi)
+  - [sa.BaseSiteComponent - APIベースクラス](#sabasesitecomponent---apiベースクラス)
+  - [sa.session - ログイン(セッション)クラス](#sasession---ログインセッションクラス)
+  - [sa.User - ユーザークラス](#sauser---ユーザークラス)
+  - [sa.Project / sa.PartialProject - プロジェクトクラス](#saproject--sapartialproject---プロジェクトクラス)
+  - [sa.Studio - スタジオクラス](#sastudio---スタジオクラス)
+  - [sa.Comment - コメントクラス](#sacomment---コメントクラス)
+  - [sa.Activity - メッセージ履歴クラス](#saactivity---メッセージ履歴クラス)
+  - [sa.CloudActivity - クラウド履歴クラス](#sacloudactivity---クラウド履歴クラス)
+  - [sa.BackpackAsset - バックパッククラス](#sabackpackasset---バックパッククラス)
+  - [sa.ForumTopic - トピッククラス](#saforumtopic---トピッククラス)
+  - [sa.ForumPost - 投稿クラス](#saforumpost---投稿クラス)
+  - [sa.Classrooms - クラスクラス](#saclassrooms---クラスクラス)
+  - [その他APIたち](#その他apiたち)
+- [クラウド変数/イベント](#クラウド変数イベント)
+  - [sa.BaseCloud](#sabasecloud)
+  - [独自のクラウドクラス](#独自のクラウドクラス)
+  - [Encoding - エンコーダー](#encoding---エンコーダー)
+  - [sa.BaseEventHandler - ベースクラウドイベント](#sabaseeventhandler---ベースクラウドイベント)
+  - [sa.CloudEvents - クラウドイベント](#sacloudevents---クラウドイベント)
+  - [sa.CloudLogEvents - クラウドログイベント](#sacloudlogevents---クラウドログイベント)
+  - [sa.CloudRequests - クラウドリクエスト](#sacloudrequests---クラウドリクエスト)
+  - [sa.CloudStorage - クラウドストレージ](#sacloudstorage---クラウドストレージ)
+  - [sa.MessageEvents - メッセージイベント](#samessageevents---メッセージイベント)
+  - [sa.Filterbot - コメントフィルター](#safilterbot---コメントフィルター)
+  - [sa.MultiEventHandler - マルチイベントハンドラー](#samultieventhandler---マルチイベントハンドラー)
+  - [独自のクラウド変数システム](#独自のクラウド変数システム) 製作中
+- [プロジェクトの編集](#プロジェクトの編集)
+- [1.0 から 2.0 への移行](#10-から-20-への移行)
+
+
+
+### はじめに
+
+#### 注意
 不確実やバージョンアップによる変化なのがあるかもしれないため、不安な場合は常に[公式wiki](https://github.com/TimMcCool/scratchattach/wiki)を確認してください。また、この記事を使用したことによる損害等を保証しません。
 
-### 注釈
+#### 注釈
 - **limit** は取得する上限 (<400)
 - **offset** は開始位置(スタート0)
 - ScratchDBは**サ終**してます
 - `sa.Project`を取得した時、`sa.PartialProject`がくる可能性があります。project.is_shared()を使って判定してください。
 - 時間情報は **2000-01-01T00:00:00.000Z** 形式
 
-### インストール
+#### インストール
 コマンドプロンプトで:
 ```
 pip install -U scratchattach
 ```
-### プロキシ
+#### プロキシ
 ```py
 from scratchattach.utils.requests import Requests
 Requests.proxies = {} # dict形式でプロキシを設定
@@ -91,6 +131,7 @@ Chrome/Edge/Brave 等 Chromium プラウザは以下の通り。
 1. Scratchでログインし、開発者ツール(F12 か fn + F12)を開きます。
 1. Applicationタブ(Firefox/DuckDuckGoは "Storage"タブ) を開きます。
 1. cookies→「scratchsessionsid」を探す。それがセッションID
+
 #### sa.User - ユーザークラス
 ユーザーを表します。
 
@@ -170,6 +211,7 @@ user.followers_over_time(segment=1, range=30)
 ユーザーIDからの取得について自分のコメント欄にユーザーを「メンション」することで取得しています。スパムにつながるので連続実行は控えてください。(ユーザーID134755499までのユーザーリストは私にDMしてくれれば教えます)
 
 - *2 「注目のプロジェクト」のdict形式について
+
 ```py
 {
     "label":ラベル(str),
@@ -283,6 +325,7 @@ project.studios(limit=None, offset=0) #list[sa.Studio] プロジェクトが入�
 - *2 作者である必要があります。
 
 - *3 フィールドのdictのkey一覧
+
 ```py
 comments_allowed = bool #コメントができるか
 shared = bool #共有するか(推測)
@@ -358,12 +401,16 @@ studio.transfer_ownership("new_owner", password="password") #オーナー権限�
 - *2 マネージャーである必要があります
 
 - *3 フィールドのdictのkey一覧
+
 ```py
 description = str #説明
 title = str #タイトル
 ```
+
 #### sa.Comment - コメントクラス
+
 comment.update() は使用できません。
+
 ```py
 #取得する
 comment = project.comment_by_id("id")
@@ -392,8 +439,11 @@ comment.reply("内容") #sa.Commentand|None 返信する
 comment.delete() #コメントを削除する
 comment.report() #コメントを報告する
 ```
-#### sa.Activity - メッセージ・履歴クラス
+
+#### sa.Activity - メッセージ履歴クラス
+
 メッセージ・ユーザーの最近行ったこと・スタジオの履歴などいろいろ混じってよくわからんことになってます。引数があったりなかったり？？？
+
 ```py
 activities = session.feed(limit=20, offset=0, date_limit=None) #list[sa.Activity] 自分のアクティビティ
 activites = user.activity() #list[sa.Activity] #list[sa.Activity] ユーザーのアクティビティ 
@@ -556,7 +606,7 @@ post.edit("内容") #編集する
 post.ocular_reactions() #list[dict] リアクションを見る
 ```
 
-#### sa.Classrooms - クラスオブジェクト
+#### sa.Classrooms - クラスクラス
 > ~~実は俺がぷるりくおくった！！！~~
 
 ```py
@@ -640,7 +690,7 @@ turbowarpクラウドは有効な User-Agent ヘッダーを提供する必要�
 >ボットは、接続時に有効な User-Agent ヘッダーを提供する必要があります。これには、連絡先情報 (Scratch プロファイル リンクに、メール アドレス、GitHub の問題ページなど) と、使用されているクラウド変数ライブラリの名前とバージョン (該当する場合) が含まれます。正確な構文は重要ではなく、人間が読める形式である必要があります。
 
 #### sa.BaseCloud
-sa.ScratchCloud(Scratchクラウド変数)/sa.TwCloud(ターボワープクラウド変数)/sa.CustomCloud(その他)に適用されてます。
+`sa.ScratchCloud`(Scratchクラウド変数)/`sa.TwCloud`(ターボワープクラウド変数)/`sa.CustomCloud`(その他)に適用されてます。
 
 ```py
 cloud = session.connect_scratch_cloud("プロジェクトid") #
@@ -718,6 +768,8 @@ sa.BaseCloud から継承するすべてのクラスには、クラウド イベ
 
 このクラスは、基本クラス `sa.BaseEventHandler` から継承されています。
 
+> この方法だと`activity.user`にアクセスできません。`activity.load_log_data()`から更新する必要があります。頻繁に使用する場合は`sa.CloudLogEvents`の使用を検討してください。
+
 使用方法:
 ```py
 import scratchattach as sa
@@ -737,25 +789,49 @@ events = cloud.events() #クラウドイベントを作成する
 
 @events.event
 def on_set(activity): #編集された時
-    print(f"Variable {activity.var} was set to the value {activity.value} at {activity.timestamp}")
-    # `activity` is a sa.CloudActivity object
-    # To get the user who set the variable, call activity.load_log_data() which saves the username to the activity.username attribute
+    print(f"変数名:{activity.var}は{activity.value}になりました。 時間:{activity.timestamp}")
 
 @events.event
 def on_del(activity): #削除された時
-    print(f"{activity.user} deleted variable {activity.var}")
+    print(f"変数{activity.var}が削除されました。")
 
 @events.event
 def on_create(activity): #作成された時
-    print(f"{activity.user} created variable {activity.var}")
+    print(f"変数{activity.var}が作成されました。")
 
 @events.event #準備が完了した時
 def on_ready():
-   print("Event listener ready!")
+   print("起動完了！")
 
 events.start()
 ```
+
 `activity`はすべて`sa.CloudActivity`です。
+
+#### sa.CloudLogEvents - クラウドログイベント
+
+> これは旧バージョンで使用されていたクラウドイベントです。sa.CloudEventsとの違いはWebsocketではなくAPIを使用してクラウド変数を読み込んでいる点です。
+
+使用方法:
+```py
+import scratchattach as sa
+
+#Scratchで
+session = sa.login("username", "password") #ログインする
+cloud = session.connect_scratch_cloud("project_id") #接続する
+#又はturbowarpで
+cloud = sa.get_tw_cloud("project_id")
+#又は独自のサーバーで
+cloud = sa.CustomCloud(
+    project_id = "プロジェクトID", cloud_host = "wss://...", username = "ユーザー名", length_limit = 10000, allow_non_numeric = False, _session = None, header = None, cookie = None, origin = None, print_connect_messages = False
+)
+
+events = cloud.events(use_logs=True) #クラウドログイベントを作成する
+
+#略
+
+events.start()
+```
 
 #### sa.CloudRequests - クラウドリクエスト
 Scratchのプロジェクトに[このファイル](https://github.com/TimMcCool/scratchattach/raw/main/assets/CloudRequests_Template.sb3)をアップロードする
@@ -795,6 +871,7 @@ client.start(thread=True) #thread=True または未設定でスレッドで実�
 すると、リスト response に `pong` と表示されるはずです。
 
 - **引数**
+
 ```py
 @client.request
 def message_count(argument1): #メッセージカウントがリクエストされた時
@@ -810,6 +887,7 @@ def message_count(argument1): #メッセージカウントがリクエストさ�
 複数の引数を入力したい場合は `&` で区切って送信してください。
 
 - **リクエストの優先順位を変更する**
+
 ```py
 #クライアントを作成する時に設定する
 client = cloud.requests(respond_order="receive") #デフォルト 受信した順に返す
@@ -848,7 +926,7 @@ def on_disabled_request(request): #リクエストが無効
 @client.event
 def on_error(request,e:Exception): #エラー発生
     pass
-""")
+
 ```
 
 `リクエスト`→`関数があるか`(ない:→`on_unknown_request`)
@@ -919,6 +997,8 @@ def on_set(key, value):
     print(f"キー:{key} に {value} が保存された")
 ```
 
+- **sa.CloudStorage**
+
 ```py
 import scratchattach as sa
 
@@ -934,9 +1014,9 @@ cloud = sa.CustomCloud(
     project_id = "プロジェクトID", cloud_host = "wss://...", username = "ユーザー名", length_limit = 10000, allow_non_numeric = False, _session = None, header = None, cookie = None, origin = None, print_connect_messages = False
 )
 storage = cloud.storage()
-
-storage.add_database(db)
 #いくらでも追加できる
+storage.add_database(db)
+
 storage.start()
 ```
 利用できる関数:
@@ -958,7 +1038,7 @@ storage.save() #すべて保存
 import scratchattach as sa
 
 #ユーザーから
-user = sa.get_user("username") # Get the user you want to observe
+user = sa.get_user("username")
 events = user.message_events()
 #自分のユーザーで
 session = sa.login("username", "password")
@@ -980,7 +1060,7 @@ def on_message(message:sa.Activity):
 events.start()
 ```
 
-#### as.Filterbot - コメントフィルター
+#### sa.Filterbot - コメントフィルター
 
 自分の**プロフィールやプロジェクト**に投稿されるメッセージを制限(削除)する
 ```py
@@ -1003,7 +1083,7 @@ filterbot.start() #開始する
 どれか(OR)で削除したい場合は複数のフィルターを作成してください。
 - `HardFilter` - 1つでも引っかかると削除
 - `SoftFilter` - ポイント制で1.0を超すと削除
-- `SpamFilter` - 過去5分間に投稿された場合の `HardFilter`
+- `SpamFilter` - 過去5分間に同じユーザーが投稿していた場合の `HardFilter`
 
 
 ```py
