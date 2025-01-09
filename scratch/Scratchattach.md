@@ -1140,11 +1140,144 @@ combined.stop() #止める
 
 #### 独自のクラウド変数システム
 
-作成中
+作成でエラー吐く謎
 
 ### プロジェクトの編集
 
-作成中
+誰かこれ使ってPythonでエディター作ってください
+
+Scratch3以上で作られたやつしか動かん
+
+#### 文句垂れ流しゾーン
+
+無視したい場合は[こちら](#baseprojectbodycomponent---abc)
+
+- 型ヒントつけろ！
+- classの中にclass作るな！
+- from_jsonで`self.__dict__.update(data)`←なんもわからん
+- リスト内表記にリスト内表記やらないで
+- `list``List`←にてる
+- `user_agent()`プロパティでよくね
+- `isDiscrete`とは(これはScratchが悪い)
+
+#### BaseProjectBodyComponent - abc
+
+共通クラス(というほどの中身もない)
+```py
+self.id #ID [*1]
+
+self.from_json(data:dict) #読み込む
+self.to_json() #jsonにする
+self._generate_new_id() #ID[*1]を再生成する
+```
+
+#### ProjectBody - 本体
+
+```py
+self.meta #dict メタ情報
+self.extensions #list[str] 拡張機能リスト
+self.monitors #list[Monitor] モニター(変数とかが見れるやつ)リスト
+self.sprites #list[sprites] (ステージ含む)スプライトリスト
+
+self.from_json(data:dict) #jsonから読み込まれる
+self.to_json #dict jsonにする
+self.blocks() #list[Block] 全てのブロックリスト
+self.block_count() #int ↑の総数
+self.assets() #list[Asset] 全てのアセットリスト
+self.asset_count() #int ↑の総数
+self.variable_by_id(variable_id) #Variable|None IDから変数を探す
+self.list_by_id(list_id) #List|None リストからIDを探す
+self.sprite_by_name(sprite_name) #Sprite|None 名前からスプライトを探す
+self.user_agent() #str ユーザーエージェントみる
+self.save(*, filename=None, dir="") #保存するはずなのに.sb3にjson書き込んでる
+
+```
+
+- `self.meta`のDict
+```py
+{
+    'agent':str,
+    'semver':str,
+    'vm':str
+}
+```
+- `self.extensions`のlist一覧
+
+つくりとちゅー
+```py
+[
+    'translate', #翻訳
+]
+```
+
+#### Sprite - スプライト
+
+
+
+#### Monitor - モニター
+
+ステージにでる変数・リストパネル
+```py
+self.height #たて
+self.id #id
+self.isDiscrete #bool 不明 変数にしかない
+self.mode #Literal['default']|Literal['large']|Literal['slider']|Literal['list']
+self.opcode #Literal['data_variable']|Literal['data_listcontents']
+self.params #dict[Literal['VARIABLE']|Literal['LIST'],str] 変数名
+self.projectBody #projectBody
+self.sliderMax #int スライダー
+self.sliderMin #int スライダー
+self.spriteName #str|None ステージならNone
+self.value #list[str|int|bool]|str|int|bool 値
+self.visible #bool 表示するか
+self.width #よこ
+self.x #int x
+self.y #int y 左上0,0?
+
+self.from_json()
+self.to_json()
+self.target()
+```
+
+#### Asset - アセット
+```py
+self.id #str
+self.assetId #同じ
+
+self.dataFormat #str
+
+self.filename #str {id}.{dataFormat} と等価
+self.md5ext #同じ
+self.download_url #str https://assets.scratch.mit.edu/internalapi/asset/{self.filename} と等価
+
+self.name #str 名前
+
+#画像
+self.rotationCenterX #左上のX (+-反転)
+self.rotationCenterY #左上のY (反転なし)
+
+#音声
+self.rate #int Hz
+self.sampleCount #int 不明
+
+```
+
+#### 関数
+
+```py
+#プロジェクトを作成する
+get_empty_project_pb() #ProjectBody 空のやつ(新規作成した時に出るやつ)を作る
+get_pb_from_dict() #ProjectBody Dictから読む
+read_sb3_file(path_to_file) #ProjectBody .sb3から読む
+_load_sb3_file(path_to_file) #dict ↑のdict版
+download_asset(asset_id_with_file_ext, *, filename=None, dir="") #アセットをダウンロード
+
+```
+
+#### 全体注釈
+
+- *1 IDは 正規表現で`[A-Za-z0-9]{20}`です。
+
 
 ### 1.0 から 2.0 への移行
 

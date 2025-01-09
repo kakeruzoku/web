@@ -1,6 +1,7 @@
 かける族のサイトへようこそ！
 
 # お知らせ
+- 非同期Scratch APIモジュール [Scapi](https://github.com/kakeruzoku/scapi )
 - [Scrachattachの日本語wiki(自作)](https://www.kakeru.f5.si/scratch/Scratchattach.html)、あるよ。
 - サイトを作り直しました
 
@@ -21,7 +22,7 @@
 - Discordサーバー(一部抜粋)
   - オーナー(サーバー主)
     - [かける鯖 - Q4tkxFVzUX](https://discord.gg/Q4tkxFVzUX) 100+メンバー
-    - [宣伝鯖 - xcHErNT9tz](https://discord.gg/xcHErNT9tz) 1500+メンバー
+    - [放置メン爆鯖 - xcHErNT9tz](https://discord.gg/xcHErNT9tz) 1800+メンバー
 - Gmail [kakeruzoku@gmail.com](mailto:kakeruzoku@gmail.com)
 - Note [https://note.com/kakeruzoku/]
 
