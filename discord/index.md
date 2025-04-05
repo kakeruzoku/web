@@ -1,6 +1,8 @@
 # Discord
 
-## Discord bot
+## Discord bot 【更新しました】
+**アップデートして使いやすくなりました！**
+
 @kakeruzoku が作った(自称)多機能bot
 [サーバーにインストール](https://0f.f5.si/b)
 
