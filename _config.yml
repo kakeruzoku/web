@@ -6,10 +6,8 @@ author: Python/Scratchユーザー - kakeruzoku@gmail.com / @kakeruzoku
 description: 受験生なう
 
 header_pages:
-  - about.md
   - discord/index.md
   - discord/bot/index.md
-  - scratch/Scratchattach.md
 
 plugins:
   - jekyll-feed

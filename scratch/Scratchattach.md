@@ -1,4 +1,11 @@
-> [AD] **[ScratchAttachが使える無料Pythonサーバー](https://bot-hosting.net/?aff=1081114793106219108) - [使い方Note](https://note.com/kakeruzoku/n/n01b256a6a764)**
+> [AD] **[無料Pythonサーバー](https://bot-hosting.net/?aff=1081114793106219108) - [使い方Note](https://note.com/kakeruzoku/n/n01b256a6a764)**
+
+> [AD] Scratchattachよりも使い勝手のいい[**Scapi**](https://pypi.org/project/scapi/)をつかいませんか？\
+**非同期処理 オープンソース 型ヒントサポート**で[サポートフォーラム](https://scratch.mit.edu/discuss/topic/800025/)/[discordサーバー](https://discord.gg/Q4tkxFVzUX)/[公式wiki](https://scapi.kakeru.f5.si/)もあります！\
+**Discord.py**などの`await`を使ったものにも最適です！\
+今すぐ`pip install scapi`からダウンロードしよう！
+
+> 7/7追記 [scapi](https://scapi.kakeru.f5.si/)の開発に力を注ぐのでもうこうしんしない 昔の俺まじでよく頑張ったね
 
 # Scratchattach
 [Github](https://github.com/TimMcCool/scratchattach) / [公式サイト](https://scratchattach.tim1de.net/)
@@ -8,13 +15,15 @@
 
 多機能でScratchのほぼ全ての操作ができる。
 
-## つくったやつ
-### LIVE PROJECT ID
+## ~~つくったやつ~~
+
+> **垢BANによりサービス終了**
+### ~~LIVE PROJECT ID~~
 [ここから](https://scratch.mit.edu/projects/1079411508)みれます。
 
 ![](https://uploads.scratch.mit.edu/get_image/project/1079411508_480x360.png)
 
-Scratchの最新のプロジェクトIDが見れます。
+~~Scratchの最新のプロジェクトIDが見れます。~~
 
 ## 自作ドキュメント(日本語版)
 ### 目次
@@ -1309,3 +1318,9 @@ a_comment = project.comment_by_id()
 - `TwCloudRequests`と`CloudRequests`は`CloudRequests`に統合された。
 - すべてのイベントはデフォルトで常にスレッドで実行されるようになりました。 これを無効にするには、`@events.event(thread=False)`を使用します。
 
+> [AD] **[無料Pythonサーバー](https://bot-hosting.net/?aff=1081114793106219108) - [使い方Note](https://note.com/kakeruzoku/n/n01b256a6a764)**
+
+> [AD] Scratchattachよりも使い勝手のいい[**Scapi**](https://pypi.org/project/scapi/)をつかいませんか？\
+**非同期処理 オープンソース 型ヒントサポート**で[サポートフォーラム](https://scratch.mit.edu/discuss/topic/800025/)/[discordサーバー](https://discord.gg/Q4tkxFVzUX)/[公式wiki](https://scapi.kakeru.f5.si/)もあります！\
+**Discord.py**などの`await`を使ったものにも最適です！\
+今すぐ`pip install scapi`からダウンロードしよう！
