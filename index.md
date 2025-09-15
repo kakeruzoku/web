@@ -6,11 +6,27 @@
 - `1/9` 非同期Scratch APIモジュール [Scapi](https://github.com/kakeruzoku/scapi )
 
 # about me
-Pythonを~~こよなく愛する~~**しか使えない**高校生プログラマー。
+ゲームとかプログラミングとかいろいろしてます
 
-最近は[**Discord bot**](https://www.kakeru.f5.si/discord/bot )をつくったり[Scapiとかいう**Pythonモジュール**](https://scapi.kakeru.f5.si/ )をつくっており、ゲームは最近、**ゼンゼロ・鳴潮・adofai・マイクラ**あたりで遊んでいる。
+## プログラミング
+**Python**がメインです。そろそろほかの言語もやってみたい。
 
-だいたいDiscordで雑談をしており、**[自鯖](https://discord.gg/Q4tkxFVzUX)をもっているのにも関わらず**~~過疎過ぎて~~[なむ界隈](https://discord.gg/114514 )でメインに過ごしている。
+つくってるもの
+- [Scapi](https://scapi.kakeru.f5.si ) (Scratch API ライブラリ)
+- [KakeruBot](https://kakeru.f5.si/discord/bot/) (Discord Bot)
+
+ScratchはアカウントがBANされたのでほぼやってません
+
+## ゲーム
+最近はゼンゼロメインで遊んでます
+
+あとは**自称放置ゲー**の[Revolution idle](https://store.steampowered.com/app/2763740/Revolution_Idle/ )とたまにマイクラをしてたりします
+
+## その他
+
+[Twitter](https://x.com/kakeruzoku )かdiscord (@kakeruzoku)にいます
+
+Discordに関しては[自鯖](https://discord.gg/Q4tkxFVzUX )と[自作Bot](https://kakeru.f5.si/discord/bot/)を持ってるのでぜひ来てね！
 
 # サービス一覧
 - [kakeru bot](https://www.kakeru.f5.si/discord/bot ) (Discord bot)

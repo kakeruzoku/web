@@ -21,7 +21,7 @@
 
 - atcoder [@kakeruzoku](https://atcoder.jp/users/kakeruzoku )
 - bluesky [@kakeru.f5.si](https://bsky.app/profile/kakeru.f5.si )
-- hoYoLAB [@かける族](https://www.hoyolab.com/accountCenter/postList?id=461148092 ) (ゼンゼロ)
+- hoYoLAB [@かける族](https://www.hoyolab.com/accountCenter/postList?id=461148092 ) (ゼンゼロ/フレンドはDM)
 - hypixel [@kakeruzoku](https://hypixel.net/members/kakeruzoku.7159148/ )
 - misskey.io [@kakeruzoku](https://misskey.io/@kakeruzoku )
 - qiita [@kakeruzoku](https://qiita.com/kakeruzoku )
